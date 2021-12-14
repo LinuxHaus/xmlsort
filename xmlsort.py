@@ -80,8 +80,8 @@ def compare_elements(el_a, el_b):
             return 1
         elif at_a.content < at_b.content:
             return -1
-        at_a = at_a.next
-        at_b = at_b.next
+        at_a = at_a.__next__
+        at_b = at_b.__next__
 
     # --- if all tag, attributes and attributes values are equal start to compare elements ---
     sub_a = el_a.get_children()
@@ -231,7 +231,7 @@ def main():
 
 
     if debug:
-        print "EXCLUDE: %s" % argz.exclude
+        print("EXCLUDE: %s" % argz.exclude)
         sys.stderr.write("vvvvvvv\n")
         sys.stderr.write(doc.serialize(None, 2)[22:])
         sys.stderr.write("^^^^^^^\n")
@@ -252,7 +252,7 @@ def main():
         sys.stderr.write("^^^^^^^\n")
 
     if argz.outfile != "-":
-        fout = file(argz.outfile, "w")
+        fout = open(argz.outfile, "w")
     else:
         fout = sys.stdout
 
